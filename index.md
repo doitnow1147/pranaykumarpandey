@@ -2,7 +2,7 @@
 layout: home
 ---
 
-![Profile Picture](/assets/profile.jpg)
+![Profile Picture](/profile.jpg)
 
 ## Bio
 
