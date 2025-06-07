@@ -1,0 +1,21 @@
+---
+---
+
+@import "minima";
+
+// This is where we will override the default styles.
+
+// Change the main body font to a serif font, like in the example
+body {
+  font-family: "Georgia", "Times New Roman", Times, serif;
+}
+
+// Optional: Make links a different color
+a {
+    color: #0056b3;
+}
+
+a:hover {
+    color: #007bff;
+    text-decoration: underline;
+}
