@@ -3,228 +3,575 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pranay Kr Pandey</title>
+    <title>Pranay Kumar Pandey</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 800px;
-            margin: 0 auto;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
             padding: 40px 20px;
-            background-color: #fff;
         }
-        
-        h1 {
-            font-size: 2.5em;
-            font-weight: 300;
-            margin-bottom: 0.2em;
-            color: #2c3e50;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
-        
-        .subtitle {
-            font-size: 1.2em;
-            color: #7f8c8d;
-            margin-bottom: 2em;
-            font-weight: 300;
-        }
-        
-        .section {
-            margin-bottom: 2.5em;
-        }
-        
-        .section h2 {
-            font-size: 1.3em;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 1em;
-            border-bottom: 1px solid #ecf0f1;
-            padding-bottom: 0.5em;
-        }
-        
-        p {
-            margin-bottom: 1em;
-            text-align: justify;
-        }
-        
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .highlight {
-            background-color: #f8f9fa;
-            padding: 1.5em;
-            border-left: 4px solid #3498db;
-            margin: 1.5em 0;
-        }
-        
-        .contact-info {
-            background-color: #f8f9fa;
-            padding: 1.5em;
-            border-radius: 8px;
-            margin-bottom: 2em;
+
+        .hero-section {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 2em;
+            gap: 60px;
+            min-height: 400px;
         }
-        
-        .contact-details {
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
             flex: 1;
+            position: relative;
+            z-index: 2;
         }
-        
-        .profile-photo {
-            width: 150px;
-            height: 150px;
+
+        .hero-image-container {
+            flex-shrink: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #3498db;
-            flex-shrink: 0;
+            border: 8px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
         }
-        
-        .photo-placeholder {
-            width: 150px;
-            height: 150px;
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-title {
+            font-size: 4em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+            font-weight: 300;
+            line-height: 1.6;
+            max-width: 600px;
+        }
+
+        .hero-description {
+            font-size: 1.1em;
+            opacity: 0.8;
+            margin-top: 20px;
+            max-width: 550px;
+            line-height: 1.7;
+        }
+
+        .main-content {
+            padding: 60px 40px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-title {
+            font-size: 2.2em;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .pronunciation-card {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            border-radius: 20px;
+            padding: 35px;
+            border-left: 6px solid #667eea;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: fit-content;
+        }
+
+        .pronunciation-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .pronunciation-item {
+            margin-bottom: 25px;
+        }
+
+        .pronunciation-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .pronunciation-label {
+            font-weight: 700;
+            color: #2d3748;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+
+        .pronunciation-text {
+            color: #4a5568;
+            font-size: 1.05em;
+            line-height: 1.7;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .contact-item {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
             border-radius: 50%;
-            background-color: #e3f2fd;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1976d2;
-            font-size: 0.9em;
-            text-align: center;
-            border: 4px solid #3498db;
-            flex-shrink: 0;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 1.8em;
         }
-        
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5em;
-            margin-top: 1em;
+
+        .contact-label {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 1.1em;
         }
-        
-        .skill-tag {
-            background-color: #e3f2fd;
-            color: #1976d2;
-            padding: 0.3em 0.8em;
+
+        .contact-value {
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        .contact-value a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-value a:hover {
+            color: #764ba2;
+        }
+
+        .about-content {
+            background: white;
             border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 500;
+            padding: 40px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
-        .experience-item {
-            margin-bottom: 1.5em;
-            padding-bottom: 1.5em;
-            border-bottom: 1px solid #ecf0f1;
+
+        .about-text {
+            font-size: 1.15em;
+            color: #4a5568;
+            margin-bottom: 25px;
+            text-align: justify;
+            line-height: 1.8;
         }
-        
-        .experience-item:last-child {
-            border-bottom: none;
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 16px;
+            margin-top: 30px;
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.2);
         }
-        
-        .job-title {
+
+        .highlight-text {
             font-weight: 600;
             font-size: 1.1em;
-            color: #2c3e50;
+            line-height: 1.7;
         }
-        
-        .company {
-            color: #3498db;
-            font-weight: 500;
+
+        .skills-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
-        .duration {
-            color: #7f8c8d;
-            font-size: 0.9em;
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
         }
-        
-        @media (max-width: 600px) {
-            body {
-                padding: 20px 15px;
-            }
-            
-            h1 {
-                font-size: 2em;
-            }
-            
-            .skills {
-                justify-content: center;
-            }
-            
-            .contact-info {
+
+        .skill-item {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-item:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 16px 32px rgba(102, 126, 234, 0.15);
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1.1em;
+        }
+
+        .connect-section {
+            background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 24px;
+            text-align: center;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connect-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain2" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain2)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .connect-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .connect-title {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: white;
+        }
+
+        .connect-text {
+            font-size: 1.2em;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 25px;
+            line-height: 1.8;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 25px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 12px 32px rgba(102, 126, 234, 0.3);
+            font-size: 1.1em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 48px rgba(102, 126, 234, 0.4);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-section {
                 flex-direction: column;
                 text-align: center;
+                gap: 40px;
+                padding: 50px 30px;
             }
-            
-            .profile-photo, .photo-placeholder {
-                width: 120px;
-                height: 120px;
+
+            .profile-image {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero-title {
+                font-size: 3.2em;
+            }
+
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+
+            .hero-section {
+                padding: 40px 20px;
+            }
+
+            .hero-title {
+                font-size: 2.5em;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2em;
+            }
+
+            .main-content {
+                padding: 40px 20px;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            }
+
+            .connect-section {
+                padding: 40px 20px;
+            }
+
+            .connect-title {
+                font-size: 2.2em;
+            }
+
+            .profile-image {
+                width: 180px;
+                height: 180px;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Pranay Kumar Pandey</h1>
-        <p class="subtitle">VP - Operations | Customer Experience & Quality | AI-Driven Operational Efficiency & Workflow Innovation</p>
-    </header>
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Pranay Kumar Pandey</h1>
+                <p class="hero-subtitle">VP - Operations | Customer Experience & Quality</p>
+                <p class="hero-description">AI-Driven Operational Efficiency & Workflow Innovation | AI Agent Development | Risk & Resource Management</p>
+            </div>
+            <div class="hero-image-container">
+                <img src="profile.jpeg" alt="Pranay Pandey" class="profile-image">
+            </div>
+        </section>
 
-    <div class="section">
-        <h2>How do I pronounce your name?</h2>
-        <p><strong>Pranay:</strong> PRAH-nay (rhymes with "may"). The first syllable "PRAH" is pronounced like "pra" in "practice" and the second syllable "nay" sounds like the word "may".</p>
-        <p><strong>Meaning:</strong> Pranay is a Sanskrit name meaning "love," "affection," or "romantic love." It represents deep emotional connection and devotion, reflecting values of compassion and meaningful relationships in both personal and professional contexts.</p>
-    </div>
+        <div class="main-content">
+            <section class="section">
+                <div class="two-column-layout">
+                    <div>
+                        <h2 class="section-title">How do I pronounce my name?</h2>
+                        <div class="pronunciation-card">
+                            <div class="pronunciation-item">
+                                <div class="pronunciation-label">Pranay:</div>
+                                <div class="pronunciation-text">PRAH-nay (rhymes with "may"). The first syllable "PRAH" is pronounced like "pra" in "practice" and the second syllable "nay" sounds like the word "may".</div>
+                            </div>
+                            <div class="pronunciation-item">
+                                <div class="pronunciation-label">Meaning:</div>
+                                <div class="pronunciation-text">Pranay is a Sanskrit name meaning "love," "affection," or "romantic love." It represents deep emotional connection and devotion, reflecting values of compassion and meaningful relationships in both personal and professional contexts.</div>
+                            </div>
+                        </div>
+                    </div>
 
-    <div class="contact-info">
-        <div class="contact-details">
-            <p><strong>Location:</strong> Kolkata, West Bengal, India</p>
-            <p><strong>Email:</strong> <a href="mailto:pranaykumarpandey2005@gmail.com">your.email@example.com</a></p>
-            <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pranay-kr-pandey/" target="_blank">linkedin.com/in/pranay-kr-pandey</a></p>
-            <p><strong>GitHub:</strong> <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+                    <div>
+                        <h2 class="section-title">Contact Information</h2>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <div class="contact-icon">📍</div>
+                                <div class="contact-label">Location</div>
+                                <div class="contact-value">Kolkata, West Bengal, India</div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">✉️</div>
+                                <div class="contact-label">Email</div>
+                                <div class="contact-value"><a href="mailto:pranaykumarpandey2005@gmail.com">pranaykumarpandey2005@gmail.com</a></div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">💼</div>
+                                <div class="contact-label">LinkedIn</div>
+                                <div class="contact-value"><a href="https://www.linkedin.com/in/pranay-kr-pandey/" target="_blank">linkedin.com/in/pranay-kr-pandey</a></div>
+                            </div>
+                            <div class="contact-item">
+                                <div class="contact-icon">🚀</div>
+                                <div class="contact-label">GitHub</div>
+                                <div class="contact-value"><a href="https://github.com/doitnow1147" target="_blank">github.com/doitnow1147</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <p class="about-text">I'm a tech enthusiast, gadget lover, and lifelong learner who believes in the power of daily small improvements. As a dynamic IT Project Manager with over 14 years of extensive experience in IT operations and strategic planning, I am dedicated to driving efficiency, innovation, and growth.</p>
+                    
+                    <p class="about-text">I have a proven track record of managing complex operational processes, optimizing workflows, and delivering technology solutions to achieve organizational goals and enhance client satisfaction. My expertise spans across AI-driven operational efficiency, workflow innovation, and AI agent development.</p>
+                    
+                    <div class="highlight-box">
+                        <p class="highlight-text">Current Focus: Leading operational excellence initiatives, developing AI-driven solutions for workflow optimization, and managing cross-functional teams to deliver exceptional customer experiences.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h2 class="section-title">Core Competencies</h2>
+                <div class="skills-container">
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-name">Project Management</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Project Planning</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Project Delivery</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Resource Management</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Risk Management</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">AI-Driven Operations</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Workflow Innovation</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">AI Agent Development</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Customer Experience</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Quality Management</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Strategic Planning</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Process Optimization</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-        <div class="photo-placeholder">
-            <img src="profile.jpeg" alt="Pranay Pandey" class="profile-photo">
-        </div>
-    </div>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <p>I'm a tech enthusiast, gadget lover, and lifelong learner who believes in the power of daily small improvements. As a dynamic IT Project Manager with over 14 years of extensive experience in IT operations and strategic planning, I am dedicated to driving efficiency, innovation, and growth.</p>
-        
-        <p>I have a proven track record of managing complex operational processes, optimizing workflows, and delivering technology solutions to achieve organizational goals and enhance client satisfaction. My expertise spans across AI-driven operational efficiency, workflow innovation, and AI agent development.</p>
-        
-        <div class="highlight">
-            <p><strong>Current Focus:</strong> Leading operational excellence initiatives, developing AI-driven solutions for workflow optimization, and managing cross-functional teams to deliver exceptional customer experiences.</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Core Competencies</h2>
-        <div class="skills">
-            <span class="skill-tag">Project Management</span>
-            <span class="skill-tag">Project Planning</span>
-            <span class="skill-tag">Project Delivery</span>
-            <span class="skill-tag">Resource Management</span>
-            <span class="skill-tag">Risk Management</span>
-            <span class="skill-tag">AI-Driven Operations</span>
-            <span class="skill-tag">Workflow Innovation</span>
-            <span class="skill-tag">AI Agent Development</span>
-            <span class="skill-tag">Customer Experience</span>
-            <span class="skill-tag">Quality Management</span>
-            <span class="skill-tag">Strategic Planning</span>
-            <span class="skill-tag">Process Optimization</span>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>Let's Connect</h2>
-        <p>I'm always interested in discussing operational excellence, AI-driven innovations, and strategic project management opportunities. Whether you're looking to optimize workflows, implement AI solutions, or explore collaborative partnerships, I'd be happy to connect and share insights.</p>
-        <p>Feel free to reach out to discuss how we can drive efficiency, innovation, and growth together.</p>
+        <section class="connect-section">
+            <div class="connect-content">
+                <h2 class="connect-title">Let's Connect</h2>
+                <p class="connect-text">I'm always interested in discussing operational excellence, AI-driven innovations, and strategic project management opportunities. Whether you're looking to optimize workflows, implement AI solutions, or explore collaborative partnerships, I'd be happy to connect and share insights.</p>
+                <p class="connect-text">Feel free to reach out to discuss how we can drive efficiency, innovation, and growth together.</p>
+                <a href="mailto:your.email@example.com" class="cta-button">Get In Touch</a>
+            </div>
+        </section>
     </div>
 </body>
 </html>
