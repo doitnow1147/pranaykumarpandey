@@ -1,0 +1,24 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that.
+
+# -- Site Settings --
+# These are used to personalize your new site.
+title: Pranay Kumar Pandey
+description: >- # this means to ignore newlines until "baseurl:"
+  I'm a tech enthusiast, gadget lover, and lifelong learner who believes in the power of daily small improvements. As a dynamic IT Project Manager with over 14 years of extensive experience in IT operations and strategic planning, I am dedicated to driving efficiency, innovation, and growth. I have a proven track record of managing complex operational processes, optimizing workflows, and delivering technology solutions to achieve organizational goals and enhance client satisfaction.
+
+# -- Theme Settings --
+# Select the theme you want to use
+theme: minima
+
+# -- Optional Settings --
+# You can add your social media handles here. They will appear in the footer.
+# twitter_username: your_twitter_handle
+# github_username:  your_github_handle #DO NOT CHANGE THIS LINE
+# linkedin_username: your_linkedin_handle
+
+# -- Build settings --
+# Don't change these unless you know what you are doing
+markdown: kramdown
