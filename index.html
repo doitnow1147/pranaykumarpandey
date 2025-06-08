@@ -14,8 +14,8 @@
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.7;
-            color: #1a1a1a;
-            background: linear-gradient(135deg, #2c2c2c 0%, #1a1a1a 100%);
+            color: #ffffff;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
@@ -23,24 +23,25 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(20, 20, 20, 0.95);
             backdrop-filter: blur(20px);
             border-radius: 24px;
-            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.5);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .hero-section {
             background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             color: white;
-            padding: 60px 40px;
+            padding: 80px 40px;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
-            gap: 60px;
-            min-height: 400px;
+            justify-content: space-between;
+            gap: 80px;
+            min-height: 500px;
         }
 
         .hero-section::before {
@@ -50,61 +51,128 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+            opacity: 0.6;
         }
 
         .hero-content {
             flex: 1;
             position: relative;
             z-index: 2;
+            max-width: 600px;
         }
 
         .hero-image-container {
             flex-shrink: 0;
             position: relative;
             z-index: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .profile-image {
-            width: 280px;
-            height: 280px;
+            width: 320px;
+            height: 320px;
             border-radius: 50%;
             object-fit: cover;
-            border: 8px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.8),
+                0 0 0 20px rgba(255, 255, 255, 0.05);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            left: -30px;
+            right: -30px;
+            bottom: -30px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
         }
 
         .profile-image:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 
+                0 40px 80px rgba(0, 0, 0, 0.9),
+                0 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-image:hover::before {
+            opacity: 1;
         }
 
         .hero-title {
-            font-size: 4em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #fff, #d1d5db);
+            font-size: 4.5em;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #ffffff, #f8fafc, #e2e8f0);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             line-height: 1.1;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .hero-subtitle {
-            font-size: 1.4em;
-            opacity: 0.9;
-            font-weight: 300;
+            font-size: 1.5em;
+            opacity: 0.95;
+            font-weight: 400;
             line-height: 1.6;
-            max-width: 600px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .hero-description {
-            font-size: 1.1em;
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 25px;
+            line-height: 1.8;
+            font-weight: 300;
+            padding: 20px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+            background: linear-gradient(45deg, #ffffff, #ef4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
             opacity: 0.8;
-            margin-top: 20px;
-            max-width: 550px;
-            line-height: 1.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
         }
 
         .main-content {
@@ -133,7 +201,7 @@
         .section-title {
             font-size: 2.2em;
             font-weight: 600;
-            color: #1a1a1a;
+            color: #ffffff;
             margin-bottom: 30px;
             position: relative;
             display: inline-block;
@@ -146,7 +214,7 @@
             left: 0;
             width: 60px;
             height: 4px;
-            background: linear-gradient(45deg, #374151, #1f2937);
+            background: linear-gradient(45deg, #dc2626, #ef4444);
             border-radius: 2px;
         }
 
@@ -158,18 +226,19 @@
         }
 
         .pronunciation-card {
-            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+            background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%);
             border-radius: 20px;
             padding: 35px;
-            border-left: 6px solid #374151;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+            border-left: 6px solid #dc2626;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             height: fit-content;
         }
 
         .pronunciation-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+            border-left-color: #ef4444;
         }
 
         .pronunciation-item {
@@ -182,13 +251,13 @@
 
         .pronunciation-label {
             font-weight: 700;
-            color: #1a1a1a;
+            color: #ffffff;
             font-size: 1.2em;
             margin-bottom: 8px;
         }
 
         .pronunciation-text {
-            color: #4b5563;
+            color: #cccccc;
             font-size: 1.05em;
             line-height: 1.7;
         }
@@ -200,24 +269,25 @@
         }
 
         .contact-item {
-            background: white;
+            background: #2d2d2d;
             padding: 30px;
             border-radius: 20px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-align: center;
         }
 
         .contact-item:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.5);
+            border-color: rgba(220, 38, 38, 0.3);
         }
 
         .contact-icon {
             width: 60px;
             height: 60px;
-            background: linear-gradient(45deg, #374151, #1f2937);
+            background: linear-gradient(45deg, #dc2626, #ef4444);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -229,49 +299,50 @@
 
         .contact-label {
             font-weight: 600;
-            color: #1a1a1a;
+            color: #ffffff;
             margin-bottom: 10px;
             font-size: 1.1em;
         }
 
         .contact-value {
-            color: #4b5563;
+            color: #cccccc;
             font-size: 1.05em;
         }
 
         .contact-value a {
-            color: #374151;
+            color: #ef4444;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .contact-value a:hover {
-            color: #1f2937;
+            color: #dc2626;
         }
 
         .about-content {
-            background: white;
+            background: #2d2d2d;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .about-text {
             font-size: 1.15em;
-            color: #4b5563;
+            color: #cccccc;
             margin-bottom: 25px;
             text-align: justify;
             line-height: 1.8;
         }
 
         .highlight-box {
-            background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
             color: white;
             padding: 30px;
             border-radius: 16px;
             margin-top: 30px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 12px 32px rgba(220, 38, 38, 0.3);
+            border: 1px solid rgba(220, 38, 38, 0.2);
         }
 
         .highlight-text {
@@ -281,11 +352,11 @@
         }
 
         .skills-container {
-            background: white;
+            background: #2d2d2d;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .skills-grid {
@@ -295,7 +366,7 @@
         }
 
         .skill-item {
-            background: linear-gradient(135deg, #f9fafb 0%, #e5e7eb 100%);
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
             padding: 25px;
             border-radius: 16px;
             text-align: center;
@@ -305,14 +376,14 @@
         }
 
         .skill-item:hover {
-            border-color: #374151;
+            border-color: #dc2626;
             transform: translateY(-5px);
-            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 16px 32px rgba(220, 38, 38, 0.2);
         }
 
         .skill-name {
             font-weight: 600;
-            color: #1a1a1a;
+            color: #ffffff;
             font-size: 1.1em;
         }
 
@@ -325,6 +396,7 @@
             margin-top: 40px;
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .connect-section::before {
@@ -334,8 +406,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain2" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grain2)"/></svg>');
-            opacity: 0.3;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.02) 0%, transparent 50%);
+            opacity: 0.6;
         }
 
         .connect-content {
@@ -360,7 +435,7 @@
 
         .cta-button {
             display: inline-block;
-            background: linear-gradient(45deg, #374151, #1f2937);
+            background: linear-gradient(45deg, #dc2626, #ef4444);
             color: white;
             padding: 18px 40px;
             border-radius: 50px;
@@ -368,30 +443,35 @@
             font-weight: 600;
             margin-top: 25px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 32px rgba(220, 38, 38, 0.4);
             font-size: 1.1em;
         }
 
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 48px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 20px 48px rgba(220, 38, 38, 0.6);
+            background: linear-gradient(45deg, #b91c1c, #dc2626);
         }
 
         @media (max-width: 1024px) {
             .hero-section {
                 flex-direction: column;
                 text-align: center;
-                gap: 40px;
-                padding: 50px 30px;
+                gap: 50px;
+                padding: 60px 30px;
             }
 
             .profile-image {
-                width: 220px;
-                height: 220px;
+                width: 250px;
+                height: 250px;
             }
 
             .hero-title {
-                font-size: 3.2em;
+                font-size: 3.5em;
+            }
+
+            .hero-stats {
+                justify-content: center;
             }
 
             .two-column-layout {
@@ -410,15 +490,23 @@
             }
 
             .hero-section {
-                padding: 40px 20px;
+                padding: 50px 20px;
             }
 
             .hero-title {
-                font-size: 2.5em;
+                font-size: 2.8em;
             }
 
             .hero-subtitle {
-                font-size: 1.2em;
+                font-size: 1.3em;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 2em;
             }
 
             .main-content {
@@ -442,8 +530,8 @@
             }
 
             .profile-image {
-                width: 180px;
-                height: 180px;
+                width: 200px;
+                height: 200px;
             }
         }
     </style>
@@ -453,8 +541,23 @@
         <section class="hero-section">
             <div class="hero-content">
                 <h1 class="hero-title">Pranay Kumar Pandey</h1>
-                <p class="hero-subtitle">AI-Driven Operational Efficiency | Customer Experience & Quality</p>
-                <p class="hero-description">Workflow Innovation | AI Agent Development | Risk & Resource Management</p>
+                <p class="hero-subtitle">AI Operations Specialist | Machine Learning Engineer | Intelligent Automation Expert</p>
+                <p class="hero-description">AI Agent Development | Intelligent Workflow Innovation | Advanced Risk & Resource Management Systems</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">14+</span>
+                        <span class="stat-label">Years Experience</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">AI Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">100+</span>
+                        <span class="stat-label">ML Models</span>
+                    </div>
+                </div>
             </div>
             <div class="hero-image-container">
                 <img src="profile.jpeg" alt="Pranay Kumar Pandey" class="profile-image">
@@ -509,12 +612,12 @@
             <section class="section">
                 <h2 class="section-title">About Me</h2>
                 <div class="about-content">
-                    <p class="about-text">I'm a tech enthusiast, gadget lover, and lifelong learner who believes in the power of daily small improvements. As a dynamic IT Project Manager with over 14 years of extensive experience in IT operations and strategic planning, I am dedicated to driving efficiency, innovation, and growth.</p>
+                    <p class="about-text">I'm a tech enthusiast, gadget lover, and lifelong learner who believes in the power of daily small improvements. As a dynamic AI Operations Specialist with over 14 years of extensive experience in artificial intelligence, machine learning, and intelligent automation systems, I am dedicated to driving innovation through cutting-edge technology solutions.</p>
                     
-                    <p class="about-text">I have a proven track record of managing complex operational processes, optimizing workflows, and delivering technology solutions to achieve organizational goals and enhance client satisfaction. My expertise spans across AI-driven operational efficiency, workflow innovation, and AI agent development.</p>
+                    <p class="about-text">I have a proven track record of developing and implementing AI-driven solutions, optimizing neural network architectures, and creating autonomous systems that revolutionize operational workflows. My expertise spans across deep learning frameworks, natural language processing, computer vision, and intelligent automation platforms.</p>
                     
                     <div class="highlight-box">
-                        <p class="highlight-text">Current Focus: Leading operational excellence initiatives, developing AI-driven solutions for workflow optimization, and managing cross-functional teams to deliver exceptional customer experiences.</p>
+                        <p class="highlight-text">Current Focus: Building next-generation AI systems, developing neural network architectures for operational optimization, and creating intelligent agents that transform business processes through advanced machine learning algorithms.</p>
                     </div>
                 </div>
             </section>
@@ -524,40 +627,40 @@
                 <div class="skills-container">
                     <div class="skills-grid">
                         <div class="skill-item">
-                            <div class="skill-name">Project Management</div>
+                            <div class="skill-name">Machine Learning</div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-name">Project Planning</div>
+                            <div class="skill-name">Deep Learning</div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-name">Project Delivery</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Resource Management</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Risk Management</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">AI-Driven Operations</div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">Workflow Innovation</div>
+                            <div class="skill-name">Neural Networks</div>
                         </div>
                         <div class="skill-item">
                             <div class="skill-name">AI Agent Development</div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-name">Customer Experience</div>
+                            <div class="skill-name">Natural Language Processing</div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-name">Quality Management</div>
+                            <div class="skill-name">Computer Vision</div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-name">Strategic Planning</div>
+                            <div class="skill-name">Intelligent Automation</div>
                         </div>
                         <div class="skill-item">
-                            <div class="skill-name">Process Optimization</div>
+                            <div class="skill-name">TensorFlow & PyTorch</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Reinforcement Learning</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">MLOps & AI Deployment</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Data Science</div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-name">Autonomous Systems</div>
                         </div>
                     </div>
                 </div>
@@ -567,8 +670,8 @@
         <section class="connect-section">
             <div class="connect-content">
                 <h2 class="connect-title">Let's Connect</h2>
-                <p class="connect-text">I'm always interested in discussing operational excellence, AI-driven innovations, and strategic project management opportunities. Whether you're looking to optimize workflows, implement AI solutions, or explore collaborative partnerships, I'd be happy to connect and share insights.</p>
-                <p class="connect-text">Feel free to reach out to discuss how we can drive efficiency, innovation, and growth together.</p>
+                <p class="connect-text">I'm always interested in discussing cutting-edge AI technologies, machine learning innovations, and intelligent automation opportunities. Whether you're looking to implement neural networks, develop AI agents, or explore advanced deep learning solutions, I'd be happy to connect and share insights.</p>
+                <p class="connect-text">Feel free to reach out to discuss how we can leverage artificial intelligence and machine learning to drive innovation and technological advancement together.</p>
                 <a href="mailto:pranaykumarpandey2005@gmail.com" class="cta-button">Get In Touch</a>
             </div>
         </section>
